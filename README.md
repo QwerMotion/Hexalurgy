@@ -43,4 +43,4 @@ Nächste Schritte
 
 Ein Globales Script einfügen, was es ermöglicht mit einer Hashmap anhand der ID des BlockTypes den tatsächlichen BlockType zu bekommen. Damit sollte es dann kein Problem sein, wenn das BlockItem genutzt wird den entsprechenden Block zu platzieren
 
-Inventar bauen
+Inventar weiter bauen, aktives item merken, items aus dem inventar benutzen, item interpreter im spieler script
