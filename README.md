@@ -32,8 +32,11 @@ Wie wird was gedroppt?
 Jeder BlockType definiert drops in ItemTypes und Quantitäten (Vec2i(min, max)). Der welt_manager (der auch die Methoden damage_block sowie player_damage_block) anbietet, schaut ob ein Block zerstört wird, falls ja und falls
 der Block loot definiert hat, wird ein PickUp instanziiert mit dem richtigen sprite usw. Der Spieler soll es dann aufsammeln können, wodurch es zerstört wird, und der spieler das ItemInstance bekommt. 
 
-Im Inventar, was wohl ein Array mit ItemInstances sein wird, muss dann geschaut werden, welche ItemInstances kompatibel sind (benutzt InstanceA das gleiche ItemType wie InstanceB...wie prüft man das, gibts sowas wie equal() in java?...)
-und ob dann noch Platz auf dem Stapel ist. Items sollen ausserdem "rumschiebbar" sein, es gibt also sozusagen zwei zustände, die so eine Instanz im Inventar haben kann 1. In einem slot, 2. Im Curser (der wohl auch nur ein Slot ist) und es ergeben sich entsprechende transitionen a von curser zu slot, b von slot zu curser. Im falle a kann es sein, dass der slot leer ist a1 oder nicht a2. Ist der slot leer wird die Instanz vom Curser in den slot verschoben, ansonsten werden die items getauscht, falls sie inkompatibel sind a11 und die instanzen des cursers die auf den stapel des slots passen werden abgelegt wenn sie kompatibel sind a12. 
+Das Inventar
+---------------
+
+Das Inventar ist ein Node2d und ein Kind vom Spieler-Node. Es ist außerdem eine Klasse namens PlayerInventory. Es hat als Kind-Knoten einen ControlNode namens player_inventory_ui, was sich um die Anzeige des Inventars kümmert. 
+PlayerInventory hat ein Attribut, welches InventoryData heißt. InventoryData ist wiederum eine Klasse, die ein Array[ItemInstance] verwaltet, und methoden fürs hinzufügen und entfernen von ItemInstances anbietet und theoretisch auch fürs speichern und laden (persistent). Für das laden und speichern muss allerdings die ItemInstance klasse nochmal erweitert werden, damit sie eine to_dictionary methode anbietet. Das Inventar ruft momentan jeden frame update_inventory(data : InventoryData) auf. Der Ui-Knoten geht dann durch alle seine slots und weist jedem das korrospondierende ItemInstance zu. Die Slots haben dann das Sprite des Items und zeigen als label den count an. Sie haben bei der erstellung außerdem einen Index bekommen, den sie zurückgeben, wenn man sie anklickt (es sind texture-buttons). Momentan ist es nicht gedacht, dass sich die größe des Inventars zur laufzeit ändert. 
 
 Nächste Schritte
 ----------------
