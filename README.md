@@ -49,8 +49,9 @@ Das Inventar hat jetzt eine große von size (aktuell 51 slots) der letzte slot (
 Nächste Schritte
 ----------------
 
+
+items aus dem inventar benutzen, item interpreter im spieler script
+
 Ein Globales Script einfügen, was es ermöglicht mit einer Hashmap anhand der ID des BlockTypes den tatsächlichen BlockType zu bekommen. Damit sollte es dann kein Problem sein, wenn das BlockItem genutzt wird den entsprechenden Block zu platzieren
 
-
-
-Inventar weiter bauen, aktives item merken, items aus dem inventar benutzen, item interpreter im spieler script
+Inventar weiter bauen (take one functionality, stacking mit maus) 
