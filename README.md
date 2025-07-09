@@ -1,8 +1,18 @@
-![image](https://github.com/user-attachments/assets/a26af0ad-4610-4eec-a90e-5ee1adedffe0)
-
+![image](https://github.com/user-attachments/assets/ff806f0b-91d3-4f05-a2fd-42ade6d915a9)
+09.07.2025 inventar
 
 ![image](https://github.com/user-attachments/assets/e7467f7d-092d-415f-b67f-4432f4222e7d)
 08.07.2025 inventar
+
+![image](https://github.com/user-attachments/assets/a26af0ad-4610-4eec-a90e-5ee1adedffe0)
+
+
+
+
+
+
+Das Inventar, Teil 2 (08.07.2025)
+---------------
 
 
 # Hexalurgy
@@ -46,12 +56,17 @@ Das Inventar, Teil 2 (08.07.2025)
 
 Das Inventar hat jetzt eine große von size (aktuell 51 slots) der letzte slot (mit dem index size - 1, also 50) ist dabei der curser-slot. Wenn die slots in den grid_containern angeordnet werden, wird der letzte zum curser_slot, indem einige attribute gesetzt werden, die dann in _process() dafür sorgen, dass der curser_slot immer dem Mauszeiger folgt. Dieser letzte slot ist dabei kein kind vom grid_container, sondern vom player_inventory_ui. Aber, der node ist dennoch im slots : Array[InventorySlot] array. (ist also ein normales InventorySlot, was auch von update_inventory erfasst wird.) Das hat den effekt, dass man, wenn man beispielsweise gneis_block_item im curser_slot hat und der count bei 100 liegt und der max_stack_stack_size bei 128, und wenn man dann weitere gneis_block_items aufgesammelt werden, wird das ganze auch bei geschlossenem inventar aktualisiert. Es gibt aktuell beim swappen von einem slot auf den curser_slot noch keine stack-funktionalität, es wird also immer getauscht. Es gibt weiterhin noch keine möglichkeit 1 item "vom stapel zu nehmen" nur den ganzen stack. Ein item nehmen wird realisiert wenn z.B. ein Rechtsklick auf einem slot bemerkt wird. Dann wird, vom slot das item_to_hold.count um 1 reduziert und das auf dem curser_slot um 1 erhöht, falls sie kompatibel sind oder falls der curser_slot leer ist. Wenn das item_to_hold.count auf 0 fällt, muss das item_to_hold auf null gesetzt werden. Ist der curser voll und der slot leer soll 1 auf den slot übertragen werden. Sind beide voll und nicht kompatibel soll einfach gar nichts passieren. 
 
+Das Inventar, Teil 3 (09.07.2025)
+---------------
+
+Es gibt jetzt minecraft-artige funktionalitäten wie stapel zu teilen, tatsächlich sollten sie jetzt genauso sein, bis auf wenige ausnahmen wie z.B. alle gedrückt-lassen-mechaniken. 
+
 Nächste Schritte
 ----------------
 
 
-items aus dem inventar benutzen, item interpreter im spieler script
+items aus dem inventar benutzen, item interpreter im spieler script, usetime einbauen, schadensmultiplikatoren einführen oder weglassen? 
 
 Ein Globales Script einfügen, was es ermöglicht mit einer Hashmap anhand der ID des BlockTypes den tatsächlichen BlockType zu bekommen. Damit sollte es dann kein Problem sein, wenn das BlockItem genutzt wird den entsprechenden Block zu platzieren
 
-Inventar weiter bauen (take one functionality, stacking mit maus) 
+
